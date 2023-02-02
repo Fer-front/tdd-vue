@@ -6,6 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test": "jest --watchAll",
+    "coverage": "jest --collectCoverage --watchAll",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
