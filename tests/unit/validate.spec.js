@@ -3,7 +3,7 @@ import { NO_STRING, STRING_EMPTY, STRING_MAX_CHAR_EXCEDED, STRING_MIN_CHAR_EXCED
 
 
 describe('Teste class de StringValidate:', ()=> {
-    it('Caso variavel seja vazia uma excessao deve ser disparada', () => {
+    it('Caso variavel seja vazia uma exceção deve ser disparada', () => {
         const valid = 'valor'
         const invalid = ''
 
@@ -23,7 +23,7 @@ describe('Teste class de StringValidate:', ()=> {
         expect(() => StringValidate.maxChar(invalid, limite)).toThrow(STRING_MAX_CHAR_EXCEDED)        
     })
 
-    it('Caso passe valor diferente de uma string uma excessao deve ser disparada', () => {        
+    it('Caso passe valor diferente de uma string uma exceção deve ser disparada', () => {        
         expect(() => StringValidate.noString(1243)).toThrow(NO_STRING)
     })
 
