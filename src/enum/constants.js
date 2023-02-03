@@ -1,0 +1,1 @@
+export const DOMAM_EMAILS_VALID = ['outlook', 'gmail', 'uol', 'ig']
