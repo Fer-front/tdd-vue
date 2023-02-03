@@ -1,52 +1,49 @@
 <template>
-    <div class="c-input-text">
-        <input 
-            type="text" 
-            name="input" 
-            class="input-text"
-            :class="{
-                'input-error': error,
-                'input-success': success,
-            }"
-        >
-        <span 
-            class="disclame"
-            :class="{
-                'hide': hide,
-                'disclame-error': error,
-                'disclame-success': success,
-            }" 
-        >
-            {{disclame}}
-        </span>
-    </div>
+  <div class="c-input-text">
+    <input
+      type="text"
+      name="input"
+      class="input-text"
+      :class="{
+        'input-error': error,
+        'input-success': success,
+      }"
+    />
+    <DisclameInput v-if="status && text" :status="status" :text="text" />
+  </div>
 </template>
 
 <script>
+import { FIELD_REQUIRED } from "../enum/error";
 
-import { FIELD_REQUIRED } from "../enum/error"
+// components
+// ============================================================================
+import DisclameInput from "./DisclameInput.vue";
 
 export default {
-    name: "InputText",
-    props: {
-        error: String,
-        success: String,
-        required: Boolean,
+  name: "InputText",
+  components: { DisclameInput },
+  props: {
+    error: String,
+    success: String,
+    required: Boolean,
+  },
+  computed: {
+    _required() {
+      return this.required ? FIELD_REQUIRED : "";
     },
-    computed: {
-        disclame() {
-            return this.error || this.success || this._required || ''
-        },
-        _required() {
-            return this.required ? FIELD_REQUIRED : ''
-        },
-        hide() {
-            return (Boolean(this.disclame) || Boolean(this._required)) || false
-        }
-    }
-}
+    status() {
+      if (this.error) return "error";
+      if (this.success) return "success";
+
+      return null;
+    },
+    text() {
+      return this._required || this.success || this.error ||  "";
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
 </style>
